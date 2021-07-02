@@ -1,8 +1,12 @@
 import React from 'react'
 import Hours from 'react-hours'
+import './schedule.scss'
 const Schedule = () => {
     return (
-        <Hours />
+        <div className="schedule">
+            <Hours theme='bootstrap' value="We 11:00-12:00"/>
+        </div>
+
     )
 }
 
