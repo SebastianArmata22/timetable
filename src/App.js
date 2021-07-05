@@ -1,13 +1,14 @@
 import './App.css';
-import NavBar from './components/NavBar/NavBar'
-import Schedule from './components/schedule/Schedule';
-import Counter from './components/counter/Counter'
+import Login from './components/login/Login'
+import Account from './components/account/Account'
+import { auth } from './firebase/config'
+import { useAuthState } from 'react-firebase-hooks/auth'
+
 function App() {
+  const [userIsLogged]=useAuthState(auth)
   return (
     <div className="App">
-      <NavBar />
-      <Counter />
-      <Schedule />
+      {userIsLogged ? <Account /> : <Login />}
     </div>
   );
 }
