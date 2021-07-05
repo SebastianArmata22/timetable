@@ -1,13 +1,20 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import avatar from '../../assets/img/undraw_profile.svg'
+import { auth } from '../../firebase/config'
 import './navBar.css'
 const NavBar = ({user}) => {
+    const history=useHistory()
     const [showMenu, setShowMenu]=useState(false)
     const changeShowMenu = ()=>{
         setShowMenu(prev=>!prev)
     }
     const logout=()=>{
-
+        auth.signOut().then(() => {
+            history.push("/")
+          }).catch((error) => {
+            console.log(error)
+          });
     }
     return (
         <div className="nav shadow">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { auth } from '../../firebase/config'
 import './login.css'
+import { Link } from 'react-router-dom'
 const Login = () => {
     const [userCredential, setuserCredential]= useState({
         email: "",
@@ -27,7 +28,7 @@ const Login = () => {
         event.preventDefault()
     }
     return (
-        <div className="login">
+    <div className="login">
         <h2>Witamy z powrotem!</h2>
         <form onSubmit={loginSubmit} className="login-form">
             <input name="email" type="email" placeholder="email..." value={userCredential.email} 
@@ -36,6 +37,7 @@ const Login = () => {
                 onChange={changeUserCredential}></input>
             <input type="submit" value="Zaloguj"></input>
         </form>
+        <Link to="/registration">Registration</Link>
     </div>
     )
 }
