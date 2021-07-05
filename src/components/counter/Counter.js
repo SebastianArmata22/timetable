@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import './counter.scss'
 const Counter = () => {
@@ -8,11 +8,15 @@ const Counter = () => {
         second: 0
     })
     //const [stop, setStop]=useState(null)
-    const [counter, setCounter]=useState({
-        hour: 0,
-        minute: 0,
-        second: 0
+    const [time, setTime]=useState({
+        seconds:0,
+        minutes:0,
+        hours:0
     })
+    const [counter, setCounter]=useState(0)
+    const changeCounter=()=>{
+        setCounter(prev=>prev+1)
+    }
     const startCount = ()=>{
         setStart({
             hour: moment().hours(),
@@ -20,23 +24,43 @@ const Counter = () => {
             second: moment().seconds()
         })
         setInterval(()=>{
-            console.log(counter)
-            setCounter({
-                hour: moment().hours()- start.hour,
-                minute: moment().minutes()- start.minute,
-                second: moment().seconds()- start.second
-            })
+            changeCounter()
         }, 1000)
     }
     const stopCount = ()=>{
        // setStop(moment().format())
         
     }
+    useEffect(() => {
+        if(counter!==0){
+            if(counter%60===0){
+                setTime(prev=>({
+                    ...prev,
+                    minutes: prev.minutes+1,
+                    seconds:0
+                }))
+            }
+            else{
+                setTime(prev=>({
+                    ...prev,
+                    seconds:prev.seconds+1
+                }))
+            }
+            if(counter%3600===0){
+                setTime(prev=>({
+                    hours: prev.hours+1,
+                    minutes:0,
+                    seconds:0
+                }))
+            }
+        }
+
+    }, [counter])
     return (
         <div className="counter">
-            <button onClick={startCount}>Start</button>
-            {counter && <p className="counter">{counter.hour}:{counter.minute}:{counter.second}</p>}
-            <button onClick={stopCount}>Stop</button>
+            <button onClick={startCount} className="counter-btn__start">Start</button>
+            <p className="counter">{time.hours<10 && 0}{time.hours}:{time.minutes<10 && 0}{time.minutes}:{time.seconds<10 && 0}{time.seconds}</p>
+            <button onClick={stopCount} className="counter-btn__stop">Stop</button>
         </div>
     )
 }
