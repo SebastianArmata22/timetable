@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React, { useState } from 'react'
 import SchedulerCalendar from 'scheduler-calendar'
 import 'scheduler-calendar/dist/index.css'
@@ -20,8 +21,7 @@ const Schedule = () => {
                   availabilityType={'infinity'}
                   duration={10}
                   is24hour={true}
-                  onIntervalChange={(data) => {setAvailabilities(data)
-                  console.log(data)}}
+                  onIntervalChange={(data) => {setAvailabilities(data)}}
                 />
         </div>
       )

@@ -20,8 +20,7 @@ const Schedule = () => {
                   availabilityType={'infinity'}
                   duration={10}
                   is24hour={true}
-                  onIntervalChange={(data) => {setAvailabilities(data)
-                  console.log(data)}}
+                  onIntervalChange={(data) => {setAvailabilities(data)}}
                 />
         </div>
       )
