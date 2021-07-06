@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import './counter.scss'
+import { BsFillTriangleFill, BsFillSquareFill } from "react-icons/bs";
 const Counter = () => {
     const [start, setStart]=useState({
         hour: 0,
@@ -58,9 +59,17 @@ const Counter = () => {
     }, [counter])
     return (
         <div className="counter">
-            <button onClick={startCount} className="counter-btn__start">Start</button>
-            <p className="counter">{time.hours<10 && 0}{time.hours}:{time.minutes<10 && 0}{time.minutes}:{time.seconds<10 && 0}{time.seconds}</p>
-            <button onClick={stopCount} className="counter-btn__stop">Stop</button>
+            <button onClick={startCount} className="counter-btn__start">
+                <BsFillTriangleFill className="counter-icon counter-icon__start"/>
+            </button>
+            <p className="counter">
+                {time.hours<10 && 0}{time.hours}:
+                {time.minutes<10 && 0}{time.minutes}:
+                {time.seconds<10 && 0}{time.seconds}
+            </p>
+            <button onClick={stopCount} className="counter-btn__stop">
+                <BsFillSquareFill className="counter-icon"/>
+            </button>
         </div>
     )
 }
