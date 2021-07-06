@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import SchedulerCalendar from 'scheduler-calendar'
 import 'scheduler-calendar/dist/index.css'
 import './schedule.scss'

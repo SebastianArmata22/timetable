@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import NavBar from '../NavBar/NavBar'
-import Counter from '../counter/Counter'
-import Schedule from '../schedule/Schedule'
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { auth, database } from '../../firebase/config';
+import { auth, database } from '../../firebase/config'
+import EmployeeAccount from './EmployeeAccount'
+import ManagerAccount from './ManagerAccount'
+
 const Account = () => {
     const { uid } = auth.currentUser
-    console.log(uid)
-    const queryToBase = database.collection("users").doc(uid).collection('schedules')
-    const [schedules] = useCollectionData(queryToBase)
-    console.log(schedules, "sss")
-    const changeSchedule=async (schedule)=>{
-        await database.collection('users').doc(uid).collection('schedules').add(schedule[0])
-        .catch((error) => {
-            console.error("Error adding document: ", error);
-        });
-
-    }
+    const [isEmployee, setIsEmployee]=useState(null)
+    useEffect(()=>{
+        database.collection("users").doc(uid).get().then((doc)=>{
+            if (doc.exists) {
+                setIsEmployee(doc.data().type)
+                console.log(doc.data().type)
+                
+            } else {
+                console.log("No such document!");
+            }
+        
+        })
+    },[])
     return (
         <div>
-            <NavBar />
-            <Counter />
-            <Schedule schedule={schedules? schedules:[]} changeSchedule={changeSchedule}/>
+            {isEmployee!==null && (isEmployee===1 ? <EmployeeAccount /> : <ManagerAccount />)}
         </div>
     )
 }
