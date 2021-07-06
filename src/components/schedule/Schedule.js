@@ -9,7 +9,6 @@ const Schedule = ({schedule,changeSchedule}) => {
           <SchedulerCalendar
                   availabilities={schedule}
                   availabilityType={'infinity'}
-                  duration={10}
                   is24hour={true}
                   onIntervalChange={(data) => {changeSchedule(data)}}
                 />

@@ -9,9 +9,7 @@ const Account = () => {
     useEffect(()=>{
         database.collection("users").doc(uid).get().then((doc)=>{
             if (doc.exists) {
-                setIsEmployee(doc.data().type)
-                console.log(doc.data().type)
-                
+                setIsEmployee(doc.data().type)                
             } else {
                 console.log("No such document!");
             }
