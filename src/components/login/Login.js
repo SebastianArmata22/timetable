@@ -24,9 +24,6 @@ const Login = () => {
         });
 
     }
-    const login=(event)=>{
-        event.preventDefault()
-    }
     return (
     <div className="login">
         <h2>Witamy z powrotem!</h2>

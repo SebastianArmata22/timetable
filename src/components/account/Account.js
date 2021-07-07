@@ -15,7 +15,7 @@ const Account = () => {
             }
         
         })
-    },[])
+    },[uid])
     return (
         <div>
             {isEmployee!==null && (isEmployee===1 ? <EmployeeAccount /> : <ManagerAccount />)}

@@ -30,6 +30,7 @@ const EmployeeAccount = () => {
             <NavBar />
             <Counter />
             <Schedule schedule={schedules? schedules:[]} changeSchedule={changeSchedule}/>
+
         </div>
     )
 }
