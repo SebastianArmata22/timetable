@@ -35,8 +35,8 @@ const Counter = () => {
            day: start.day,
            slots:[
                {
-                   from: `${start.hour}:${start.minute}`,
-                   to: `${moment().hours()}:${moment().minutes()}`,
+                   from: `${start.hour}:${start.minute<10 && 0}${start.minute}`,
+                   to: `${moment().hours()}:${moment().minutes()<10 && 0}${moment().minutes()}`,
                }
            ]
        }

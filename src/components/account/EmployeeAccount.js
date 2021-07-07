@@ -9,11 +9,8 @@ const EmployeeAccount = () => {
     const { uid } = auth.currentUser
     const queryToBase = database.collection("users").doc(uid).collection('schedules')
     const [schedules] = useCollectionData(queryToBase)
+
     const changeSchedule=async (schedule)=>{
-        await database.collection('users').doc(uid).collection('schedules').add(schedule[0])
-        .catch((error) => {
-            console.error("Error adding document: ", error);
-        });
         await database.collection("users").doc(uid).collection('schedules').where("day", "==", moment().format('YYYY-MM-DD'))
         .get()
             .then((querySnapshot) => {
