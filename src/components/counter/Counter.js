@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import moment from 'moment'
 import './counter.scss'
 import { BsFillTriangleFill, BsFillSquareFill } from "react-icons/bs";
 import { auth, database } from '../../firebase/config';
 const Counter = () => {
+    let interval= useRef(null)
     const {uid}=auth.currentUser
     const [start, setStart]=useState({
         day: "",
@@ -17,21 +18,19 @@ const Counter = () => {
         hours:0
     })
     const [counter, setCounter]=useState(0)
- 
-    const intervalTrigger=()=>{
-        return setInterval(()=>{
-            setCounter(prev=>prev+1)
-        }, 1000)
-    }
+
     const startCount = ()=>{
         setStart({
             day: moment().format('YYYY-MM-DD'),
             hour: moment().hours(),
             minute: moment().minutes()
         })
-        intervalTrigger()
+        interval.current=setInterval(()=>{
+            setCounter(prev=>prev+1)
+        }, 1000)
     }
     const stopCount = async ()=>{
+        clearInterval(interval.current)
        const schedule={
            day: start.day,
            slots:[
