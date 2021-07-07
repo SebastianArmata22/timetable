@@ -3,14 +3,9 @@ import React, { useEffect, useState } from 'react'
 const TimeLineItem = ({date,schedules}) => {
     const [hours, setHours]=useState([])
     useEffect(()=>{
-        setHours([])
         schedules.map(schedule=>{
             if(schedule.day===date)
-            {
-               setHours(schedule.slots)
-            }
-
-            return schedule
+            setHours(schedules.slots)
         })
     },[date, schedules])
     return (

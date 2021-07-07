@@ -8,6 +8,7 @@ const TimeLineItem = ({date,schedules}) => {
             if(schedule.day===date)
             {
                setHours(schedule.slots)
+                console.log(schedule.slots, "to")
             }
 
             return schedule

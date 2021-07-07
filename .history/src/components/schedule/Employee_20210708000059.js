@@ -35,7 +35,7 @@ const Employee = ({employee, start}) => {
     return (
         <tr >
             <td>{employee.name} {employee.lastName}</td>
-            {date.map(item=><TimeLineItem schedules={schedules ? schedules : []} date={item}/>)}
+            {date.map(item=><TimeLineItem schedules={schedules} date={item}/>)}
         </tr>
     )
 }
