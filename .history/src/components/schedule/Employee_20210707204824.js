@@ -21,13 +21,13 @@ const Employee = ({employee, start}) => {
         },[employee, start])
         */
         useEffect(()=>{
-            setDate([moment(start).format('YYYY-MM-DD'),
-                moment(start).add(1, 'd').format('YYYY-MM-DD'),
-                moment(start).add(2, 'd').format('YYYY-MM-DD'),
-                moment(start).add(3, 'd').format('YYYY-MM-DD'),
-                moment(start).add(4, 'd').format('YYYY-MM-DD'),
-                moment(start).add(5, 'd').format('YYYY-MM-DD'),
-                moment(start).add(6, 'd').format('YYYY-MM-DD')])
+setDate([moment(start).format('YYYY-MM-DD'),
+    moment(start).add(1, 'd').format('YYYY-MM-DD'),
+    moment(start).add(2, 'd').format('YYYY-MM-DD'),
+    moment(start).add(3, 'd').format('YYYY-MM-DD'),
+    moment(start).add(4, 'd').format('YYYY-MM-DD'),
+    moment(start).add(5, 'd').format('YYYY-MM-DD'),
+    moment(start).add(6, 'd').format('YYYY-MM-DD')])
         }, [start])
     return (
         <tr >
