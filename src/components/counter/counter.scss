@@ -24,7 +24,9 @@
         background-color:#2ca860;
     }
 }
-
+.counter-icon__start{
+    transform: rotate(90deg);
+}
 .counter-btn__stop{
     background-color: #e74c3c;
     &:hover{

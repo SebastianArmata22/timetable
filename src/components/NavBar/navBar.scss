@@ -14,6 +14,7 @@
     color: #858796;
     font-size: 14px;
     font-weight: 400;
+    cursor: pointer;
     
 
 }
@@ -22,18 +23,24 @@
     width: 2rem;
     border-radius: 50%;
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 .nav-dropdown{
     position: absolute;
     right: 0;
     top: 4rem;
-    text-transform: uppercase;
-    font-weight: 800;
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     color: #b7b9cc;
+    background-color: #fff;
     margin: 0.5rem;
-    width: 6rem;
+    width: 10rem;
     padding: 0.5rem;
+    z-index: 10000;
+    cursor: pointer;
+    &:hover{
+        background-color: #EDEEF2 ;
+        color: #a5a6aa;
+    }
 }
 .nav-container__profile{
     display: flex;

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import avatar from '../../assets/img/undraw_profile.svg'
 import { auth } from '../../firebase/config'
-import './navBar.css'
+import './navBar.scss'
 const NavBar = () => {
     const user=auth.currentUser
     const history=useHistory()
