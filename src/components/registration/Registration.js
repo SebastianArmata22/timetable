@@ -5,6 +5,7 @@ import './registration.scss'
 import welcome from '../../assets/img/welcome.svg'
 const Registration = () => {
     const usersCollection = database.collection('users')
+    const [message, setMessage]=useState("")
     const history=useHistory()
     const [user, setUser]=useState({
         name: "",
@@ -36,12 +37,14 @@ const Registration = () => {
 
             })
             .catch((error) => {
-              var errorCode = error.code;
               var errorMessage = error.message;
-              console.log(errorCode, errorMessage)
+              setMessage(errorMessage)
             });
+            }
+            else{
+                setMessage('Passwords are different!')
+            }
         }
-    }
     const goToLogin=()=>{
         history.push('/')
     }
@@ -88,6 +91,7 @@ const Registration = () => {
                         </input>
                         <input type="submit" value="Create account"></input>
                     </form>
+                    <p className="login-text__message">{message}</p>
                     <p className="registration-link" onClick={goToLogin}>Already have an account? Login!</p>
                 </div>
                 <div className="registration-container__img">

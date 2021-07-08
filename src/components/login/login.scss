@@ -10,6 +10,7 @@
 
 }
 .login-container{
+    align-items: center;
     border-radius: 1rem;
     p:first-child{
         font-size: 1.5rem;
@@ -20,6 +21,11 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
+}
+.login-text__message{
+    text-align: center;
+    max-width:20rem;
+    color: red;
 }
 .login-form {
     input{

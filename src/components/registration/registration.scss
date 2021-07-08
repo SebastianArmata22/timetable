@@ -10,10 +10,6 @@
 
 }
 .registration-form, .registration-container__form{
-    p:first-child{
-        font-size: 1.5rem;
-        font-weight: 200;
-    }
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -45,7 +41,19 @@
         text-decoration: underline;
     }
 }
-
+.login-text__message{
+    text-align: center;
+    color: red;
+    max-width:20rem;
+}
+.registration-container__form{
+    display: flex;
+    align-items: center;
+    p:first-child{
+        font-size: 1.5rem;
+        font-weight: 200;
+    }
+}
 @media screen and (max-width: 600px){
     .registration-container__form{
         width: 100%;

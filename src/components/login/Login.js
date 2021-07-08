@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import login from '../../assets/img/login.svg'
 const Login = () => {
     const history=useHistory()
+    const [message, setMessage]=useState("")
     const [userCredential, setuserCredential]= useState({
         email: "",
         password: ""
@@ -20,9 +21,8 @@ const Login = () => {
         event.preventDefault()
         auth.signInWithEmailAndPassword(userCredential.email, userCredential.password)
         .catch((error) => {
-            var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorCode, errorMessage)
+            setMessage(errorMessage)
         });
 
     }
@@ -43,6 +43,7 @@ const Login = () => {
                     onChange={changeUserCredential}></input>
                 <input type="submit" value="Log in"></input>
             </form>
+            <p className="login-text__message">{message}</p>
             <p className="login-link" onClick={goToRegistration}>Create an Account!</p>
         </div>
     </div>
