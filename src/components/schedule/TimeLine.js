@@ -14,12 +14,6 @@ const TimeLine = ({employees}) => {
         setStart(prev=>moment(prev).add(7, 'd').format('LL'))
     }
     return (
-        <div className="card shadow mb-4">
-        <div className="card-header py-3">
-            <h6 className="m-0 font-weight-bold text-primary">
-                Schedule
-            </h6>
-        </div>
         <div className="card-body">
             <div className="timeLine-card">
                 <button className="timeLine-btn" onClick={prevDate}><MdKeyboardArrowLeft /></button>
@@ -29,7 +23,7 @@ const TimeLine = ({employees}) => {
                 <table className="table table-bordered" width="100%" cellSpacing="0">
                     <thead>
                         <tr>
-                            <th>Pracownik</th>
+                            <th></th>
                             <th>{start}</th>
                             <th>{moment(start).add(1, 'd').format('LL')}</th>
                             <th>{moment(start).add(2, 'd').format('LL')}</th>
@@ -45,7 +39,6 @@ const TimeLine = ({employees}) => {
                 </table>
             </div>
     </div>
-</div>
     )
 }
 

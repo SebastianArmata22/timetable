@@ -10,7 +10,7 @@ const ManagerAccount = () => {
         setSelectUser(e.target.value)
     }
     */
-    const queryToBase = database.collection("users")
+    const queryToBase = database.collection("users").where("type", "==",1)
     const [employees] = useCollectionData(queryToBase,{idField: 'id'})
     return (
         <div>
