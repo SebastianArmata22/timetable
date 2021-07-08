@@ -5,6 +5,7 @@ import { BsFillTriangleFill, BsFillSquareFill } from "react-icons/bs";
 import { auth, database } from '../../firebase/config';
 const Counter = () => {
     let interval= useRef(null)
+    const [isVisible, setIsVisible]=useState(true)
     const {uid}=auth.currentUser
     const [start, setStart]=useState({
         day: "",
@@ -20,6 +21,7 @@ const Counter = () => {
     const [counter, setCounter]=useState(0)
 
     const startCount = ()=>{
+        setIsVisible(false)
         setStart({
             day: moment().format('YYYY-MM-DD'),
             hour: moment().hours(),
@@ -30,6 +32,7 @@ const Counter = () => {
         }, 1000)
     }
     const stopCount = async ()=>{
+        setIsVisible(true)
         clearInterval(interval.current)
        const schedule={
            day: start.day,
@@ -45,7 +48,6 @@ const Counter = () => {
             .then((querySnapshot) => {
                 querySnapshot.size===0 &&  database.collection('users').doc(uid).collection('schedules').add(schedule)
                 querySnapshot.forEach((doc) => {
-                    console.log(doc.id, " => ", doc.data());
                     database.collection('users').doc(uid).collection('schedules').doc(doc.id).update({
                         day: start.day,
                         slots:[
@@ -91,17 +93,17 @@ const Counter = () => {
     }, [counter])
     return (
         <div className="counter">
-            <button onClick={startCount} className="counter-btn__start">
+            {isVisible && <button onClick={startCount} className="counter-btn__start">
                 <BsFillTriangleFill className="counter-icon counter-icon__start"/>
-            </button>
+            </button>}
             <p className="counter">
                 {time.hours<10 && 0}{time.hours}:
                 {time.minutes<10 && 0}{time.minutes}:
                 {time.seconds<10 && 0}{time.seconds}
             </p>
-            <button onClick={stopCount} className="counter-btn__stop">
+            {!isVisible && <button onClick={stopCount} className="counter-btn__stop">
                 <BsFillSquareFill className="counter-icon"/>
-            </button>
+            </button>}
         </div>
     )
 }

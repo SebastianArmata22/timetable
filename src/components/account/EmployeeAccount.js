@@ -10,10 +10,15 @@ const EmployeeAccount = () => {
     const [schedules] = useCollectionData(queryToBase)
 
     const changeSchedule=async (schedule)=>{
-        await database.collection('users').doc(uid).collection('schedules').add(schedule[0])
-        .catch((error) => {
-            console.log("Error:", error);
-        });
+
+        await database.collection("users").doc(uid).collection('schedules').where("day", "==", schedule[0].day)
+        .get()
+            .then((querySnapshot) => {
+                querySnapshot.size===0 &&  database.collection('users').doc(uid).collection('schedules').add(schedule[0])
+                querySnapshot.forEach((doc) => {
+                    database.collection('users').doc(uid).collection('schedules').doc(doc.id).update(schedule[0])
+            });
+        })
     }
     return (
         <div>
