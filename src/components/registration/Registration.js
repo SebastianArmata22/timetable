@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { auth, database } from '../../firebase/config'
 import './registration.scss'
-
+import welcome from '../../assets/img/welcome.svg'
 const Registration = () => {
     const usersCollection = database.collection('users')
     const history=useHistory()
@@ -42,48 +42,57 @@ const Registration = () => {
             });
         }
     }
+    const goToLogin=()=>{
+        history.push('/')
+    }
 
     return (
             <div className="registration">
-                <form onSubmit={registrarion} className="registration-form">
-                <input 
-                        name="name"
-                        type="text" 
-                        placeholder="Name..." 
-                        value={user.name}
-                        onChange={changeUser}>
-                    </input>
+                <div className="registration-container__form">
+                    <p>Create an Account!</p>
+                    <form onSubmit={registrarion} className="registration-form">
                     <input 
-                        name="lastName"
-                        type="text" 
-                        placeholder="Last name..." 
-                        value={user.lastName}
-                        onChange={changeUser}>
-                    </input>
-                    <input 
-                        name="email"
-                        type="email" 
-                        placeholder="Email..." 
-                        value={user.email}
-                        onChange={changeUser}>
-                    </input>
-                    <input 
-                        name="password"
-                        type="password" 
-                        placeholder="Password..." 
-                        value={user.password}
-                        onChange={changeUser}>
-                    </input>
-                    <input 
-                        name="repeatPassword"
-                        type="password" 
-                        placeholder="Repeat password..." 
-                        value={user.repeatPassword}
-                        onChange={changeUser}>
-                    </input>
-                    <input type="submit" value="Create account"></input>
-                </form>
-
+                            name="name"
+                            type="text" 
+                            placeholder="Name..." 
+                            value={user.name}
+                            onChange={changeUser}>
+                        </input>
+                        <input 
+                            name="lastName"
+                            type="text" 
+                            placeholder="Last name..." 
+                            value={user.lastName}
+                            onChange={changeUser}>
+                        </input>
+                        <input 
+                            name="email"
+                            type="email" 
+                            placeholder="Email..." 
+                            value={user.email}
+                            onChange={changeUser}>
+                        </input>
+                        <input 
+                            name="password"
+                            type="password" 
+                            placeholder="Password..." 
+                            value={user.password}
+                            onChange={changeUser}>
+                        </input>
+                        <input 
+                            name="repeatPassword"
+                            type="password" 
+                            placeholder="Repeat password..." 
+                            value={user.repeatPassword}
+                            onChange={changeUser}>
+                        </input>
+                        <input type="submit" value="Create account"></input>
+                    </form>
+                    <p className="registration-link" onClick={goToLogin}>Already have an account? Login!</p>
+                </div>
+                <div className="registration-container__img">
+                    <img src={welcome} alt="registartion" ></img>
+                </div>
             </div>
     )
 }
