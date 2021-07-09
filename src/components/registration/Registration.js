@@ -3,8 +3,11 @@ import { useHistory } from 'react-router-dom'
 import { auth, database } from '../../firebase/config'
 import './registration.scss'
 import welcome from '../../assets/img/welcome.svg'
+import { useTranslation } from "react-i18next"
+
 const Registration = () => {
     const usersCollection = database.collection('users')
+    const { t, i85n } = useTranslation();
     const [message, setMessage]=useState("")
     const history=useHistory()
     const [user, setUser]=useState({
@@ -52,19 +55,19 @@ const Registration = () => {
     return (
             <div className="registration">
                 <div className="registration-container__form">
-                    <p>Create an Account!</p>
+                    <p>{t("Create an Account")}!</p>
                     <form onSubmit={registrarion} className="registration-form">
                     <input 
                             name="name"
                             type="text" 
-                            placeholder="Name..." 
+                            placeholder={`${t("Name")}...`}
                             value={user.name}
                             onChange={changeUser}>
                         </input>
                         <input 
                             name="lastName"
                             type="text" 
-                            placeholder="Last name..." 
+                            placeholder={`${t("Last name")}...`}
                             value={user.lastName}
                             onChange={changeUser}>
                         </input>
@@ -78,21 +81,21 @@ const Registration = () => {
                         <input 
                             name="password"
                             type="password" 
-                            placeholder="Password..." 
+                            placeholder={`${t("Password")}...`}
                             value={user.password}
                             onChange={changeUser}>
                         </input>
                         <input 
                             name="repeatPassword"
                             type="password" 
-                            placeholder="Repeat password..." 
+                            placeholder={`${t("Repeat password")}...`}
                             value={user.repeatPassword}
                             onChange={changeUser}>
                         </input>
-                        <input type="submit" value="Create account"></input>
+                        <input type="submit" value={t("Create account")}></input>
                     </form>
                     <p className="login-text__message">{message}</p>
-                    <p className="registration-link" onClick={goToLogin}>Already have an account? Login!</p>
+                    <p className="registration-link" onClick={goToLogin}>{t("Already have an account")}? {t("Login")}!</p>
                 </div>
                 <div className="registration-container__img">
                     <img src={welcome} alt="registartion" ></img>

@@ -5,9 +5,17 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Registration from './components/registration/Registration'
 import Account from './components/account/Account';
+import React from 'react';
+import moment from "moment";
+import 'moment/locale/en-gb' 
+import 'moment/locale/pl' 
 
 function App() {
   const [userIsLogged]=useAuthState(auth)
+  const lang = (navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language;
+  moment.locale(lang) 
+  alert(lang)
+
   return (
     <div className="App">
       <Router>

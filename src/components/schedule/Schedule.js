@@ -3,7 +3,7 @@ import SchedulerCalendar from 'scheduler-calendar'
 import 'scheduler-calendar/dist/index.css'
 import './schedule.scss'
 
-const Schedule = ({schedule,changeSchedule}) => {
+const Schedule = ({schedule,changeSchedule, dayContainerStyle, topHeaderContainerStyle}) => {
       return (
         <div className="App">
           <SchedulerCalendar
@@ -11,6 +11,9 @@ const Schedule = ({schedule,changeSchedule}) => {
                   availabilityType={'infinity'}
                   is24hour={true}
                   onIntervalChange={(data) => {changeSchedule(data)}}
+                  dayContainerStyle={dayContainerStyle}
+                  intervalsWrapStyle="tmp3"
+                  topHeaderContainerStyle={topHeaderContainerStyle}
                 />
         </div>
       )

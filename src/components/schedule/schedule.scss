@@ -127,3 +127,29 @@
     background-color: #fff !important;
     font-weight: 700;
   }
+
+  .tmp {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .tmp2 {
+    z-index: 2;
+    opacity: 0;
+  }
+
+  .tmp4 {
+    z-index: 500;
+  }
+
+  .tmp5 {
+    pointer-events: all; 
+  }
+
+.tmp4 ._3kyIQ {
+  opacity: 0;
+}
+
+.tmp6 ._3kyIQ {
+  pointer-events: none;
+}

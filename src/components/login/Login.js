@@ -3,8 +3,11 @@ import { auth } from '../../firebase/config'
 import './login.scss'
 import { useHistory } from 'react-router-dom'
 import login from '../../assets/img/login.svg'
+import { useTranslation } from "react-i18next"
+
 const Login = () => {
     const history=useHistory()
+    const { t, i85n } = useTranslation();
     const [message, setMessage]=useState("")
     const [userCredential, setuserCredential]= useState({
         email: "",
@@ -35,16 +38,16 @@ const Login = () => {
             <img src={login} alt="login"></img>
         </div>
         <div className="login-container">
-            <p>Welcome Back!</p>
+            <p>{t("Welcome Back")}!</p>
             <form onSubmit={loginSubmit} className="login-form">
                 <input name="email" type="email" placeholder="Email..." value={userCredential.email} 
                     onChange={changeUserCredential}></input>
-                <input name="password" type="password" placeholder="Password..." value={userCredential.password}
+                <input name="password" type="password" placeholder={`${t("Password")}...`} value={userCredential.password}
                     onChange={changeUserCredential}></input>
-                <input type="submit" value="Log in"></input>
+                <input type="submit" value={t("Log in")}></input>
             </form>
             <p className="login-text__message">{message}</p>
-            <p className="login-link" onClick={goToRegistration}>Create an Account!</p>
+            <p className="login-link" onClick={goToRegistration}>{t("Create an Account")}!</p>
         </div>
     </div>
     )

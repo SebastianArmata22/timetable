@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './schedule.scss'
-const Interval = ({date,schedules}) => {
+
+const Interval = ({date,schedules, stacked}) => {
     const [hours, setHours]=useState([])
     useEffect(()=>{
         setHours([])
@@ -14,7 +15,7 @@ const Interval = ({date,schedules}) => {
         })
     },[date, schedules])
     return (
-        <td className="interval-cell">{hours.map(hour=><span className="interval-text">{hour.from}-{hour.to}</span>)}</td>
+        <td className="interval-cell">{hours.map(hour=>{return stacked ? (<span className="interval-text">{hour.from}</span>) : (<span className="interval-text">{hour.from}-{hour.to}</span>)})}</td>
     )
 }
 

@@ -53,8 +53,8 @@ const Counter = () => {
                         slots:[
                             ...doc.data().slots,
                             {
-                                from: `${start.hour}:${start.minute}`,
-                                to: `${moment().hours()}:${moment().minutes()}`,
+                                from: `${start.hour < 10 ? "0" : ""}${start.hour}:${start.minute < 10 ? "0" : ""}${start.minute}`,
+                                to: `${moment().hours() < 10 ? "0" : ""}${moment().hours()}:${moment().minutes() < 10 ? "0" : ""}${moment().minutes()}`,
                             }
                         ]
                     })
