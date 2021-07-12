@@ -3,10 +3,12 @@ import { useHistory } from 'react-router-dom'
 import avatar from '../../assets/img/undraw_profile.svg'
 import { auth } from '../../firebase/config'
 import './navBar.scss'
+import { useTranslation } from "react-i18next"
 const NavBar = () => {
     const user=auth.currentUser
     const history=useHistory()
     const [showMenu, setShowMenu]=useState(false)
+    const { t, i18n } = useTranslation();
     const changeShowMenu = ()=>{
         setShowMenu(prev=>!prev)
     }
@@ -26,7 +28,7 @@ const NavBar = () => {
             <div style={{display: showMenu ? "block" : "none"}}>
                 <div className="nav-dropdown shadow">
                     <p className="" onClick={logout}>
-                        Wyloguj się
+                        {t("Log out")}
                     </p>
                 </div>
             </div>

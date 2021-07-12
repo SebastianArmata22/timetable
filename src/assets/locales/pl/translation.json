@@ -9,5 +9,6 @@
     "Name": "Imię",
     "Last name": "Nazwisko",
     "Repeat password": "Powtórz hasło",
-    "Already have an account": "Posiadasz już konto"
+    "Already have an account": "Posiadasz już konto",
+    "Log out": "Wyloguj się"
 }

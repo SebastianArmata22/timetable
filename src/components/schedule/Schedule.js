@@ -12,7 +12,6 @@ const Schedule = ({schedule,changeSchedule, dayContainerStyle, topHeaderContaine
                   is24hour={true}
                   onIntervalChange={(data) => {changeSchedule(data)}}
                   dayContainerStyle={dayContainerStyle}
-                  intervalsWrapStyle="tmp3"
                   topHeaderContainerStyle={topHeaderContainerStyle}
                 />
         </div>

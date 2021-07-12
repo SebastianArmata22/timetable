@@ -97,10 +97,10 @@ const EmployeeAccount = () => {
             {
                 isStacked ? <div style={{ display: "grid" }}>
                 <div style={{ gridColumn: 1, gridRow: 1, opacity: 1, }} onClick={clickHandler} >
-                    <Schedule schedule={schedules? schedules:[]} changeSchedule={changeSchedule} dayContainerStyle="tmp2" topHeaderContainerStyle={isStackedVisible ? "tmp4" : "tmp6"} />
+                    <Schedule schedule={schedules? schedules:[]} changeSchedule={changeSchedule} dayContainerStyle="transparentSchedule-dayContainer" topHeaderContainerStyle={isStackedVisible ? "transparentSchedule-topHeader_visible" : "transparentSchedule-topHeader_hidden"} />
                 </div>
                 <div style={{ gridColumn: 1, gridRow: 1, zIndex: 0}} >
-                    <Schedule schedule={stackedSchedules? stackedSchedules:[]} changeSchedule={changeSchedule} dayContainerStyle="tmp" topHeaderContainerStyle="tmp5" />
+                    <Schedule schedule={stackedSchedules? stackedSchedules:[]} changeSchedule={changeSchedule} dayContainerStyle="emptySchedule-dayContainer" topHeaderContainerStyle="visibleSchedule-topHeader" />
                 </div>
             </div> : <div>
                     <Schedule schedule={schedules? schedules:[]} changeSchedule={changeSchedule}/>

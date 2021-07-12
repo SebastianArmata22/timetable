@@ -128,28 +128,28 @@
     font-weight: 700;
   }
 
-  .tmp {
+  .visibleSchedule-dayContainer {
     z-index: 1;
     opacity: 1;
   }
 
-  .tmp2 {
+  .visibleSchedule-topHeader {
+    pointer-events: all; 
+  }
+
+  .transparentSchedule-dayContainer {
     z-index: 2;
     opacity: 0;
   }
 
-  .tmp4 {
+  .transparentSchedule-topHeader_visible {
     z-index: 500;
   }
 
-  .tmp5 {
-    pointer-events: all; 
-  }
-
-.tmp4 ._3kyIQ {
+.transparentSchedule-topHeader_visible ._3kyIQ {
   opacity: 0;
 }
 
-.tmp6 ._3kyIQ {
+.transparentSchedule-topHeader_hidden ._3kyIQ {
   pointer-events: none;
 }

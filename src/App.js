@@ -9,12 +9,15 @@ import React from 'react';
 import moment from "moment";
 import 'moment/locale/en-gb' 
 import 'moment/locale/pl' 
+import { useTranslation } from "react-i18next"
 
 function App() {
   const [userIsLogged]=useAuthState(auth)
+  const { t, i18n } = useTranslation();
   const lang = (navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language;
-  moment.locale(lang) 
-  alert(lang)
+  moment.locale(lang)
+  
+  React.useEffect(() => {i18n.changeLanguage(lang)}, [])
 
   return (
     <div className="App">

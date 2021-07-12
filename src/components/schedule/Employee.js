@@ -48,29 +48,16 @@ const Employee = ({employee, start, stacked}) => {
        if (schedules) setStackedSchedules(getStackedSchedules(schedules));
    }, [schedules]);
 
-       /* useEffect(()=>{
-            database.collection("users").doc(employee.id).collection('schedules')
-            .where("day", "in", [moment(start).format('YYYY-MM-DD'), moment(start).add(1, 'd').format('YYYY-MM-DD'),moment(start).add(2, 'd').format('YYYY-MM-DD'),moment(start).add(3, 'd').format('YYYY-MM-DD'),moment(start).add(4, 'd').format('YYYY-MM-DD'),moment(start).add(5, 'd').format('YYYY-MM-DD'),moment(start).add(6, 'd').format('YYYY-MM-DD')])
-            .get()
-                .then((querySnapshot) => {
-                    querySnapshot.forEach((doc) => {
-                        setSched(prev=>[...prev,doc.data()])
-                });
-            })
-            .catch((error) => {
-                console.log("Error:", error);
-            });
-        },[employee, start])
-        */
-        useEffect(()=>{
-            setDate([moment(start).format('YYYY-MM-DD'),
-                moment(start).add(1, 'd').format('YYYY-MM-DD'),
-                moment(start).add(2, 'd').format('YYYY-MM-DD'),
-                moment(start).add(3, 'd').format('YYYY-MM-DD'),
-                moment(start).add(4, 'd').format('YYYY-MM-DD'),
-                moment(start).add(5, 'd').format('YYYY-MM-DD'),
-                moment(start).add(6, 'd').format('YYYY-MM-DD')])
-        }, [start])
+    useEffect(()=>{
+        setDate([moment(start).format('YYYY-MM-DD'),
+            moment(start).add(1, 'd').format('YYYY-MM-DD'),
+            moment(start).add(2, 'd').format('YYYY-MM-DD'),
+            moment(start).add(3, 'd').format('YYYY-MM-DD'),
+            moment(start).add(4, 'd').format('YYYY-MM-DD'),
+            moment(start).add(5, 'd').format('YYYY-MM-DD'),
+            moment(start).add(6, 'd').format('YYYY-MM-DD')])
+    }, [start])
+    
     return (
         <tr className="employee-row">
             <td className="employee-text">{employee.name} {employee.lastName}</td>
